@@ -1,0 +1,10 @@
+body {
+    background: #16a085;
+    font-family: sans-serif;
+    margin:200px;
+}
+
+.navbar {
+    height:100px;
+    background: #e74c3c;
+}

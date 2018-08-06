@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <title>Comments</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container">
+          <a href="/" class="navbar-brand">
+            Partido del progreso
+          </a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="/signupformulario" class="nav-link">Unirme</a>
+              </li>
+              <li class="nav-item">
+                <a href="#info-section" class="nav-link">Información</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Comunicación</a>
+              </li>
+              <li class="nav-item">
+                <div href="/login" class="navbar-link">
+                  <a href="#" class="nav-link">Iniciar sesión</a>
+                  
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> 
+
+      <pre>
+        <%= tasks %>
+      </pre>
+
+      <div class="container">
+
+        <div class="row">
+          <!--FORM-->
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <form action="/add" method="post">
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="nombre" placeholder="Title">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" name="comentario" cols="80"
+                      placeholder="Add a Description"
+                      ></textarea>
+                  </div>
+                  <button class="btn btn-primary" type="submit">
+                    Add
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+      
+          <!-- LIST -->
+          <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>N°</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i=0; i < tasks.length; i++) { %>
+                  <tr>
+                    <td><%= i + 1%></td>
+                    <td><strong><%= tasks[i].title %></strong></td>
+                    <td><%= tasks[i].description %></td>
+                    <td>
+                      <a
+                        class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+                        href="/turn/<%= tasks[i]._id %>">Done</a>
+                      <a href="/delete/<%= tasks[i]._id %>"
+                        class="btn btn-danger">
+                        Delete
+                      </a>
+                      <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+      
+          </div>
+        </div>
+      
+      </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+    
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+      
+    </body>
+
+    
+
+    </html>
